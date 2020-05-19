@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo:3.6.18
+    container_name: mongo_server
+    env_file:
+      - ${NODE_ENV}.env
+    ports:
+      - 27017:27017
+    volumes:
+      - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+      - ./data/db:/data/db
+
